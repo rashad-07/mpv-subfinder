@@ -8,6 +8,10 @@ Searches [OpenSubtitles.com](https://www.opensubtitles.com) and [SubDL](https://
 
 ---
 
+> **Note:** This project was built with AI assistance. I'm not a developer — if something breaks, it might stay broken. Tested and confirmed working on **Windows only**. Linux and macOS support is included in the code but has not been tested by me personally — use on those platforms at your own risk.
+
+---
+
 ## Requirements
 
 - **mpv** (any recent build)
