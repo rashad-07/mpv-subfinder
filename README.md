@@ -231,7 +231,7 @@ Run `python subfinder.py --test` in a terminal to verify Python is reachable. On
 Open mpv's console with `` ` `` and look for `SubFinder loaded — Ctrl+S ready` in the output. If absent, the script isn't being loaded — check the filename and folder path.
 
 **Remove Subtitle from mpv doesn't work (Windows)**  
-Install pywin32: `pip install pywin32`. Without it, the Remove Primary / Secondary Subtitle right-click options are unavailable. Subtitle loading itself still works without it.
+Install pywin32: `pip install pywin32`. Without it, many features that rely on direct communication with mpv may not work or behave inconsistently. installing pywin32 is strongly recommended on Windows.
 
 **Pre-filled search query is wrong or empty**  
 Enable the IPC server in `mpv.conf` as described above, and install pywin32 on Windows.
