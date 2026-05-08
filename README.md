@@ -90,20 +90,28 @@ S        screenshot-window
 
 ## Optional packages
 
+**Windows — named pipe IPC** *(highly recommended on Windows)*
 ```
-# Windows — named pipe IPC (highly recommended on Windows)
 pip install pywin32
+```
 
-# Legacy OpenSubtitles provider — works with no API key at all
+**Legacy subtitle provider — no API key needed** *(highly recommended)*
+```
 pip install subliminal babelfish dogpile.cache
+```
 
-# Format conversion: lets you translate ASS/SSA/VTT files and strip HI/SDH from non-SRT formats
+**Subtitle format conversion** — required for translating ASS/SSA/VTT files and stripping HI/SDH from non-SRT formats
+```
 pip install pysubs2
+```
 
-# Encoding detection: fixes garbled characters in non-UTF-8 subtitle files
+**Encoding detection** — fixes garbled characters in non-UTF-8 subtitle files
+```
 pip install charset-normalizer
+```
 
-# Subtitle/audio sync (resource-intensive — use sparingly)
+**Subtitle/audio sync** — resource-intensive, use sparingly
+```
 pip install ffsubsync
 ```
 
@@ -113,8 +121,21 @@ pip install -r requirements-optional.txt
 ```
 
 **External tools** (not pip):
-- **ffmpeg** — needed for embedded subtitle extraction and auto sync. Download from [ffmpeg.org](https://ffmpeg.org). SubFinder searches common install paths and the system PATH automatically.
-- **WinRAR or 7-Zip** — needed to extract `.rar` subtitle packs from SubDL. ZIP packs work without either.
+
+**ffmpeg** — needed for embedded subtitle extraction and auto sync. SubFinder finds it automatically if it's on your PATH.
+```
+winget install -e --id Gyan.FFmpeg
+```
+
+**7-Zip** — needed to extract `.rar` subtitle packs from SubDL. ZIP packs work without it.
+```
+winget install -e --id 7zip.7zip
+```
+
+Or if you prefer WinRAR:
+```
+winget install -e --id RARLab.WinRAR
+```
 
 ---
 
