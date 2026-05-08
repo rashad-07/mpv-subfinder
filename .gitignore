@@ -1,0 +1,35 @@
+# SubFinder runtime data
+# These are created automatically at runtime next to subfinder.py.
+# They contain personal data (API keys, cached subtitles, logs) and
+# should never be committed.
+
+SubFinder/
+*.log
+*.log.*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
