@@ -26,7 +26,7 @@ Searches [OpenSubtitles.com](https://www.opensubtitles.com) and [SubDL](https://
 SubFinder has three subtitle sources. Configure them in **Settings** after first launch — not in any config file.
 
 **OpenSubtitles.com** — free API key required  
-Get one at [opensubtitles.com/en/consumers](https://www.opensubtitles.com/en/consumers). Free accounts get 20 subtitle downloads per day. Enter your OS.com username and password in the Settings gear (⚙) for a higher daily quota. When this provider is enabled, the direct REST API is the primary search path, including moviehash matching against your local file for best sync accuracy.
+Get one at [opensubtitles.com/en/consumers](https://www.opensubtitles.com/en/consumers). Enter your OS.com username and password in the Settings gear (⚙) for a higher daily quota. When this provider is enabled, the direct REST API is the primary search path, including moviehash matching against your local file for best sync accuracy.
 
 **SubDL** — free API key required  
 Get one at [subdl.com/account/api](https://subdl.com/account/api). Runs independently alongside OpenSubtitles.com.
@@ -35,7 +35,7 @@ Get one at [subdl.com/account/api](https://subdl.com/account/api). Runs independ
 Install the `subliminal` package and SubFinder gains access to the legacy OpenSubtitles provider, which works with no credentials at all. It is used as a fallback when the direct OS.com API returns no results — and it works entirely on its own if you have no API keys configured. See [Optional packages](#optional-packages).
 
 **Gemini** — only needed for subtitle translation  
-Used exclusively for the right-click Translate to… feature. Has nothing to do with search or download. Get a free key at [aistudio.google.com](https://aistudio.google.com).
+Used exclusively for the right-click Translate to… feature. Get a free key at [aistudio.google.com](https://aistudio.google.com).
 
 ---
 
