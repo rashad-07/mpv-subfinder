@@ -1,6 +1,6 @@
 # mpv-subfinder
 
-![Python](https://img.shields.io/badge/python-3.8+-3776AB?logo=python&logoColor=white) ![License](https://img.shields.io/badge/license-MIT-green) ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-555555)
+![Python](https://img.shields.io/badge/python-3.8+-3776AB?logo=python&logoColor=fff) ![License](https://img.shields.io/badge/license-MIT-green) ![Windows](https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black) ![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=F0F0F0)
 
 Press **Ctrl+S** while something is playing in mpv. A window opens, results come in, click one, subtitle loads. That's it.
 
