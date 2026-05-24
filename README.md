@@ -1,14 +1,34 @@
 # mpv-subfinder
 
+![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgray)
+
 Press **Ctrl+S** while something is playing in mpv. A window opens, results come in, click one, subtitle loads. That's it.
 
 Searches [OpenSubtitles.com](https://www.opensubtitles.com) and [SubDL](https://subdl.com) simultaneously. Works on local files and stream URLs. No browser, no copy-pasting filenames.
 
-![demo](.github/demo.gif)
+<p align="center">
+  <img src=".github/demo.gif" alt="demo">
+</p>
 
 ---
 
-> **Note:** This project was built with AI assistance. I'm not a developer — if something breaks, it might stay broken. Tested and confirmed working on **Windows only**. Linux and macOS support is included in the code but has not been tested by me personally — use on those platforms at your own risk.
+> **Note:** Built with AI assistance — I'm not a professional developer. The tool works well in practice, but ongoing maintenance may be limited. Contributions and bug reports are [welcome](https://github.com/rashad-07/mpv-subfinder/issues). Tested and confirmed working on **Windows**. Linux and macOS support is included in the code but untested — use at your own risk.
+
+---
+
+## Contents
+
+- [Requirements](#requirements)
+- [API Keys](#api-keys)
+- [Installation](#installation)
+- [The Ctrl+S override](#the-ctrls-override)
+- [Optional packages](#optional-packages)
+- [Verify your setup](#verify-your-setup)
+- [Features](#features)
+- [What's stored on disk](#whats-stored-on-disk)
+- [subfinder_title.lua](#subfinder_titlelua-optional)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
 
 ---
 
@@ -100,7 +120,7 @@ pip install pywin32
 pip install subliminal babelfish dogpile.cache
 ```
 
-**Subtitle format conversion** — required for translating ASS/SSA/VTT files and stripping HI/SDH from non-SRT formats
+**Subtitle format conversion** — required for translating ASS/SSA/VTT/.sub (MicroDVD) files, for ffsubsync to sync .sub files, and for stripping HI/SDH from non-SRT formats
 ```
 pip install pysubs2
 ```
@@ -132,10 +152,12 @@ winget install -e --id Gyan.FFmpeg
 winget install -e --id 7zip.7zip
 ```
 
-Or if you prefer WinRAR:
+Or WinRAR:
 ```
 winget install -e --id RARLab.WinRAR
 ```
+
+Or **bsdtar** — pre-installed on macOS (it is the system `tar`) and on Windows 10 1803+ (`tar.exe`). On Linux, install via `apt install libarchive-tools` or `pacman -S bsdtar`. SubFinder detects it automatically.
 
 ---
 
@@ -166,11 +188,12 @@ python subfinder.py --test
 
 **Season packs**
 - When SubDL returns a full-season archive, SubFinder extracts the subtitle for the current episode and keeps the archive on disk so every other episode in the season loads instantly from cache
-- ZIP packs work out of the box. RAR packs require WinRAR or 7-Zip
+- ZIP packs work out of the box. RAR packs require WinRAR, 7-Zip, or bsdtar
 
 **Right-click menu (on a result row)**
 - Load as Primary / Secondary Subtitle
 - Remove Primary / Secondary from mpv
+- Save next to video — copies the subtitle to the video's own directory as `video_name.lang.ext`. Triggers a silent download first if needed. Only appears when a local video file is playing
 - Show in Explorer / Finder
 - Copy file path, URL, or release name
 - Translate to… — translates the subtitle into any supported language via Gemini. Downloads first if needed. Result is cached; clicking again is instant
@@ -179,8 +202,8 @@ python subfinder.py --test
 - Delete from Cache / Remove from List
 
 **Right-click on empty area**
-- Add Subtitle File… — browse for any subtitle file on disk and add it to the results list
-- Extract Current Subtitle / Extract All Subtitles — pulls subtitle tracks from the local video file using ffmpeg. Image-based tracks (PGS, DVD) are not supported
+- Add Subtitle File… — browse for any subtitle file or season pack archive (.zip / .rar) on disk. Archives are extracted automatically; the correct episode is matched against the currently playing video
+- Extract Current Embedded Subtitle / Extract All Embedded Subtitles — pulls subtitle tracks from the local video file using ffmpeg. Image-based tracks (PGS, DVD) are not supported
 
 **Settings**
 - 20+ built-in colour themes
@@ -209,7 +232,7 @@ Downloaded subtitle files go to the system temp directory under `mpv_subs/`. The
 
 ## subfinder_title.lua (optional)
 
-A companion script that sets a clean window title in mpv every time a file loads — no subtitle searching involved. Useful for streams and files with messy names.
+A companion script that resolves a clean window title for URL streams in mpv — no subtitle searching involved. Useful for streams with opaque or messy URLs.
 
 Copy to your scripts folder alongside `subfinder.py`:
 ```
@@ -231,7 +254,7 @@ Run `python subfinder.py --test` in a terminal to verify Python is reachable. On
 Open mpv's console with `` ` `` and look for `SubFinder loaded — Ctrl+S ready` in the output. If absent, the script isn't being loaded — check the filename and folder path.
 
 **Remove Subtitle from mpv doesn't work (Windows)**  
-Install pywin32: `pip install pywin32`. Without it, many features that rely on direct communication with mpv may not work or behave inconsistently. installing pywin32 is strongly recommended on Windows.
+Install pywin32: `pip install pywin32`. Without it, many features that rely on direct communication with mpv may not work or behave inconsistently. Installing pywin32 is strongly recommended on Windows.
 
 **Pre-filled search query is wrong or empty**  
 Enable the IPC server in `mpv.conf` as described above, and install pywin32 on Windows.
@@ -240,7 +263,7 @@ Enable the IPC server in `mpv.conf` as described above, and install pywin32 on W
 First, make sure `subliminal` is installed — it requires no API key and works on its own as a reliable fallback, so it's the easiest way to guarantee you always get results. If you haven't: `pip install subliminal babelfish dogpile.cache`. Beyond that, confirm at least one API key is entered in Settings and the corresponding provider is enabled. Try simplifying the query — remove the year, resolution, and release tags. Run `python subfinder.py --test` to confirm keys are detected.
 
 **RAR pack fails to extract**  
-Install WinRAR or 7-Zip. SubFinder checks the Windows registry and common install paths automatically.
+Install WinRAR, 7-Zip, or bsdtar (pre-installed on macOS; on Linux: `apt install libarchive-tools`; on Windows 10+: `tar.exe` is already on your PATH). SubFinder checks the Windows registry and common install paths automatically.
 
 The in-app **Help** button covers everything in more detail, including file locations and the full right-click menu reference.
 
