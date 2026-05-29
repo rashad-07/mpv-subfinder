@@ -1,6 +1,6 @@
 # mpv-subfinder
 
-![Python](https://img.shields.io/badge/python-3.8+-3776AB?logo=python&logoColor=fff&labelColor=555555) ![License](https://img.shields.io/badge/license-MIT-brightgreen?labelColor=555555) ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-c0392b?labelColor=555555)
+![Python](https://img.shields.io/badge/python-3.10+-3776AB?logo=python&logoColor=fff&labelColor=555555) ![License](https://img.shields.io/badge/license-MIT-brightgreen?labelColor=555555) ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-c0392b?labelColor=555555)
 
 Press **Ctrl+S** while something is playing in mpv. A window opens, results come in, click one, subtitle loads. That's it.
 
@@ -35,7 +35,7 @@ Searches [OpenSubtitles.com](https://www.opensubtitles.com) and [SubDL](https://
 ## Requirements
 
 - **mpv** (any recent build)
-- **Python 3.8+** — 3.11.9 recommended, must be on your PATH
+- **Python 3.10+** — 3.11.9 recommended, must be on your PATH
 - **subliminal** *(highly recommended)* — no API key, no account. Install it and you have a working subtitle source immediately, no configuration required. `pip install subliminal babelfish dogpile.cache`
 - **pywin32** *(highly recommended, Windows only)* — the primary way SubFinder talks to mpv. Handles path reading and subtitle injection directly into the player. `pip install pywin32`
 
@@ -163,10 +163,10 @@ Or **bsdtar** — pre-installed on macOS (it is the system `tar`) and on Windows
 
 ## Verify your setup
 
-Run this in a terminal to check Python, API keys, optional packages, ffmpeg, and sync tools all at once:
+Run this in a terminal to check , API keys, optional packages, ffmpeg, and sync tools all at once:
 
 ```
-python subfinder.py --test
+ subfinder.py --test
 ```
 
 ---
@@ -248,7 +248,7 @@ It reads SubFinder's session cache, so titles SubFinder has already resolved app
 ## Troubleshooting
 
 **Window never opens when I press Ctrl+S**  
-Run `python subfinder.py --test` in a terminal to verify Python is reachable. On Windows, make sure Python was installed with "Add to PATH" checked. If not, find the full path to `python.exe` — you can hardcode it in `subfinder_loader.lua` at the `command_sets` block near the top of the file.
+Run ` subfinder.py --test` in a terminal to verify  is reachable. On Windows, make sure  was installed with "Add to PATH" checked. If not, find the full path to `.exe` — you can hardcode it in `subfinder_loader.lua` at the `command_sets` block near the top of the file.
 
 **Ctrl+S does nothing and there are no errors**  
 Open mpv's console with `` ` `` and look for `SubFinder loaded — Ctrl+S ready` in the output. If absent, the script isn't being loaded — check the filename and folder path.
