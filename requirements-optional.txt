@@ -26,8 +26,8 @@ dogpile.cache
 
 # ── Subtitle format conversion ────────────────────────────────────────────────
 # Required for:
-#   - Translating ASS/SSA/VTT subtitles (Translate to… menu)
-#   - Stripping HI/SDH annotations from non-SRT formats
+#   - Translating ASS/SSA/VTT subtitles (Translate to menu)
+#   - Stripping SDH annotations from non-SRT formats
 #   pip install pysubs2
 pysubs2
 
