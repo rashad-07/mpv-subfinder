@@ -1,5 +1,4 @@
-<img src=".github/icon.png" alt="SubFinder" width="60" align="left">
-<h1 style="margin-top: -50px; padding-top: 0;">mpv-subfinder</h1>
+> <img src=".github/icon.png" alt="SubFinder" width="60" align="left" hspace="10"> # mpv-subfinder
 
 <br clear="left"/>
 
