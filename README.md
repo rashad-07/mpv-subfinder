@@ -1,13 +1,5 @@
-<table>
-  <tr>
-    <td valign="middle">
-      <img src=".github/icon.png" alt="SubFinder" width="60">
-    </td>
-    <td valign="middle">
-      <h1>mpv-subfinder</h1>
-    </td>
-  </tr>
-</table>
+<img src=".github/icon.png" alt="SubFinder" width="60" align="left" style="margin-right: 15px;">
+<h1 style="line-height: 60px;">mpv-subfinder</h1>
 
 ![Python](https://img.shields.io/badge/python-3.10+-3776AB?logo=python&logoColor=fff&labelColor=555555) ![License](https://img.shields.io/badge/license-MIT-brightgreen?labelColor=555555) ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-c0392b?labelColor=555555)
 
