@@ -1,10 +1,14 @@
+<p align="center">
+  <img src=".github/icon.png" alt="SubFinder" width="120">
+</p>
+
 # mpv-subfinder
 
 ![Python](https://img.shields.io/badge/python-3.10+-3776AB?logo=python&logoColor=fff&labelColor=555555) ![License](https://img.shields.io/badge/license-MIT-brightgreen?labelColor=555555) ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-c0392b?labelColor=555555)
 
 Press **Ctrl+S** while something is playing in mpv. A window opens, results come in, click one, subtitle loads. That's it.
 
-Searches [OpenSubtitles.com](https://www.opensubtitles.com) and [SubDL](https://subdl.com) simultaneously. Works on local files and stream URLs. No browser, no copy-pasting filenames.
+Searches OpenSubtitles.com and SubDL at once, with subliminal as a no-key fallback if you'd rather not sign up for anything. Works on local files and stream URLs — no browser, no copy-pasting filenames.
 
 <p align="center">
   <img src=".github/demo.gif" alt="demo">
@@ -52,10 +56,10 @@ Get one at [opensubtitles.com/en/consumers](https://www.opensubtitles.com/en/con
 Get one at [subdl.com/account/api](https://subdl.com/account/api). Runs independently alongside OpenSubtitles.com.
 
 **subliminal** — no API key needed  
-Install the `subliminal` package and SubFinder gains access to the legacy OpenSubtitles provider, which works with no credentials at all. It is used as a fallback when the direct OS.com API returns no results — and it works entirely on its own if you have no API keys configured. See [Optional packages](#optional-packages).
+Install the `subliminal` package and SubFinder gains access to the legacy OpenSubtitles provider, which works with no credentials at all. It also kicks in when OS.com's direct returns 0 results. See [Optional packages](#optional-packages).
 
 **Gemini** — only needed for subtitle translation  
-Used exclusively for the right-click Translate to… feature. Get a free key at [aistudio.google.com](https://aistudio.google.com).
+Used exclusively for the right-click Translate to feature. Get a free key at [aistudio.google.com](https://aistudio.google.com).
 
 ---
 
@@ -63,7 +67,7 @@ Used exclusively for the right-click Translate to… feature. Get a free key at 
 
 ### 1. Copy the scripts
 
-**Windows** — `%APPDATA%\mpv\scripts\`
+**Windows** — `%APPDATA%\mpv\scripts\` (or `%APPDATA%\mpv.net\scripts\` if you use mpv.net)
 ```
 subfinder.py
 subfinder_loader.lua
@@ -120,7 +124,7 @@ pip install pywin32
 pip install subliminal babelfish dogpile.cache
 ```
 
-**Subtitle format conversion** — required for translating ASS/SSA/VTT/.sub (MicroDVD) files, for ffsubsync to sync .sub files, and for stripping HI/SDH from non-SRT formats
+**Subtitle format conversion** — required for translating ASS/SSA/VTT/.sub (MicroDVD) files, for ffsubsync to sync .sub files, and for stripping SDH from non-SRT formats
 ```
 pip install pysubs2
 ```
@@ -163,54 +167,27 @@ Or **bsdtar** — pre-installed on macOS (it is the system `tar`) and on Windows
 
 ## Verify your setup
 
-Run this in a terminal to check , API keys, optional packages, ffmpeg, and sync tools all at once:
+Run this in a terminal to check mpv connectivity, API keys, optional packages, ffmpeg, and sync tools all at once:
 
 ```
- subfinder.py --test
+python subfinder.py --test
 ```
 
 ---
 
 ## Features
 
-**Search**
-- Results from OpenSubtitles.com (direct REST API with moviehash matching for best sync), SubDL, and optionally the legacy subliminal provider — all in one search
-- Score column shows match quality 0–100%. 99% means a byte-exact hash match against your file — sync is guaranteed. Lower scores are query-matched
-- Search multiple languages in a single pass
-- Sort by Score, Language, Format, Provider, or Release; drag column headers to reorder
-- Pre-fills the search query automatically from the video filename, stream URL, or mpv media title
-- Secondary / fallback results appear below a collapsed toggle row
+Search hits OpenSubtitles.com and SubDL at the same time, plus subliminal as a no-key fallback if you don't want to bother with accounts. Moviehash matching gets you a 93–99% score when your file matches exactly — basically a guaranteed sync.
 
-**Loading**
-- Double-click or press Enter to load a subtitle as the primary track
-- Right-click → Load as Secondary Subtitle to load a second track simultaneously
-- Downloaded subtitles are cached — cached rows load instantly with no re-download
+Full season packs from SubDL get auto-matched to whatever episode you're watching, and the rest of the season loads instantly from cache after that.
 
-**Season packs**
-- When SubDL returns a full-season archive, SubFinder extracts the subtitle for the current episode and keeps the archive on disk so every other episode in the season loads instantly from cache
-- ZIP packs work out of the box. RAR packs require WinRAR, 7-Zip, or bsdtar
+Translation goes through Gemini, and you can run multiple keys in parallel for speed. If it gets interrupted, it resumes from where it left off instead of re-translating everything, and it keeps character names consistent even across chunks handled by different keys.
 
-**Right-click menu (on a result row)**
-- Load as Primary / Secondary Subtitle
-- Remove Primary / Secondary from mpv
-- Save next to video — copies the subtitle to the video's own directory as `video_name.lang.ext`. Triggers a silent download first if needed. Only appears when a local video file is playing
-- Show in Explorer / Finder
-- Copy file path, URL, or release name
-- Translate to… — translates the subtitle into any supported language via Gemini. Downloads first if needed. Result is cached; clicking again is instant
-- Strip HI/SDH annotations — removes speaker labels, `[sound effects]`, and ♪ music lines in-place, then reloads in mpv. Shown when HI/SDH content is detected in the subtitle or inferred from the release name
-- Auto sync — corrects subtitle timing against the video audio using ffsubsync or alass. Works for local files and direct HTTP/HTTPS URLs. Audio is extracted by ffmpeg and cached for 2 hours so subsequent syncs of the same video start near-instantly. Live streams (HLS/DASH) are not supported
-- Delete from Cache / Remove from List
+Auto Sync fixes drifted timing against the video's own audio. Rescale FPS and Offset Subtitle handle the more specific cases — frame-rate mismatches and fixed time shifts — and both can be undone independently. Strip SDH annotations pulls out speaker labels, sound effects, and music-note lines in one click.
 
-**Right-click on empty area**
-- Add Subtitle File… — browse for any subtitle file or season pack archive (.zip / .rar) on disk. Archives are extracted automatically; the correct episode is matched against the currently playing video
-- Extract Current Embedded Subtitle / Extract All Embedded Subtitles — pulls subtitle tracks from the local video file using ffmpeg. Image-based tracks (PGS, DVD) are not supported
+There's also embedded subtitle extraction straight from a video file, 20+ colour themes, and the usual row height / font / column settings.
 
-**Settings**
-- 20+ built-in colour themes
-- Row height and font size scaling
-- Toggle Score, Release, Language, Provider, Format columns
-- Auto-search on open, double-click-to-close, lock window size, remember window position
-- Gemini configuration: multiple API keys (each runs as a parallel translation worker), configurable model chain and chunk size
+Everything above — every setting, every right-click action, every edge case — is covered in full by the in-app **Help** (the **?** button, top-right of the main window). This README is just enough to get you installed.
 
 ---
 
@@ -226,29 +203,20 @@ SubFinder creates a `SubFinder/` folder next to the script:
 
 Downloaded subtitle files go to the system temp directory under `mpv_subs/`. The cache is capped at 200 MB and cleaned automatically.
 
-**API keys are stored in plaintext** in `subfinder_settings.json`. Don't commit that folder or sync it to untrusted cloud storage.
+**API keys are stored in plaintext** in `subfinder_settings.json`. Don't commit that folder or sync it to untrusted cloud storage. API keys for every provider are automatically redacted from the log file.
 
 ---
 
 ## subfinder_title.lua (optional)
 
-A companion script that resolves a clean window title for URL streams in mpv — no subtitle searching involved. Useful for streams with opaque or messy URLs.
-
-Copy to your scripts folder alongside `subfinder.py`:
-```
-subfinder_title.lua
-```
-
-It reads SubFinder's session cache, so titles SubFinder has already resolved appear instantly.
-
-> **Note:** Session cache and cd_cache lookups in `subfinder_title.lua` are currently Windows-only. On Linux and macOS the script still runs and applies title cleaning — cached lookups are just silently skipped.
+A small companion script — resolves a clean window title for URL streams with opaque or messy URLs. No subtitle searching involved. Copy `subfinder_title.lua` into your scripts folder alongside `subfinder.py`; it reads SubFinder's session cache, so titles SubFinder has already resolved appear instantly. Session-cache lookups are currently Windows-only — it still runs and applies title cleaning on Linux/macOS, cached lookups are just silently skipped there.
 
 ---
 
 ## Troubleshooting
 
 **Window never opens when I press Ctrl+S**  
-Run ` subfinder.py --test` in a terminal to verify  is reachable. On Windows, make sure  was installed with "Add to PATH" checked. If not, find the full path to `.exe` — you can hardcode it in `subfinder_loader.lua` at the `command_sets` block near the top of the file.
+Run `python subfinder.py --test` in a terminal to verify Python is reachable. On Windows, make sure Python was installed with "Add to PATH" checked. If not, find the full path to `python.exe` — you can hardcode it in `subfinder_loader.lua` at the `command_sets` block, near the end of the file, inside the Ctrl+S key binding.
 
 **Ctrl+S does nothing and there are no errors**  
 Open mpv's console with `` ` `` and look for `SubFinder loaded — Ctrl+S ready` in the output. If absent, the script isn't being loaded — check the filename and folder path.
@@ -265,7 +233,10 @@ First, make sure `subliminal` is installed — it requires no API key and works 
 **RAR pack fails to extract**  
 Install WinRAR, 7-Zip, or bsdtar (pre-installed on macOS; on Linux: `apt install libarchive-tools`; on Windows 10+: `tar.exe` is already on your PATH). SubFinder checks the Windows registry and common install paths automatically.
 
-The in-app **Help** button covers everything in more detail, including file locations and the full right-click menu reference.
+**Something's acting up and you're not sure why**  
+Settings → Clear All Caches flushes everything — downloads, search session, index, log, and subliminal's own cache. You'll need to re-enter your OS.com auth afterward if you were using it.
+
+The in-app **Help** button (top-right of the main window) covers everything in more detail, including file locations and the full right-click menu reference.
 
 ---
 
