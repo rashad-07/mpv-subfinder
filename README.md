@@ -1,7 +1,8 @@
-<div style="display: flex; align-items: center; gap: 20px;">
-  <img src=".github/icon.png" alt="SubFinder" width="120">
-  <h1>mpv-subfinder</h1>
-</div>
+<img src=".github/icon.png" alt="SubFinder" width="120" align="left">
+
+# mpv-subfinder
+
+<br clear="left"/>
 
 ![Python](https://img.shields.io/badge/python-3.10+-3776AB?logo=python&logoColor=fff&labelColor=555555) ![License](https://img.shields.io/badge/license-MIT-brightgreen?labelColor=555555) ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-c0392b?labelColor=555555)
 
