@@ -234,7 +234,7 @@ First, make sure `subliminal` is installed — it requires no API key and works 
 Install WinRAR, 7-Zip, or bsdtar (pre-installed on macOS; on Linux: `apt install libarchive-tools`; on Windows 10+: `tar.exe` is already on your PATH). SubFinder checks the Windows registry and common install paths automatically.
 
 **Something's acting up and you're not sure why**  
-Settings → Clear All Caches flushes everything — downloads, search session, index, log, and subliminal's own cache. You'll need to re-enter your OS.com auth afterward if you were using it.
+Settings → Clear All Caches flushes everything — downloads, search session, index, log, and subliminal's own cache.
 
 The in-app **Help** button (top-right of the main window) covers everything in more detail, including file locations and the full right-click menu reference.
 
