@@ -187,8 +187,6 @@ Auto Sync fixes drifted timing against the video's own audio. Rescale FPS and Of
 
 There's also embedded subtitle extraction straight from a video file, 20+ colour themes, and the usual row height / font / column settings.
 
-Everything above — every setting, every right-click action, every edge case — is covered in full by the in-app **Help** (the **?** button, top-right of the main window). This README is just enough to get you installed.
-
 ---
 
 ## What's stored on disk
