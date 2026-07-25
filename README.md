@@ -16,7 +16,7 @@ Searches OpenSubtitles.com and SubDL at once, with subliminal as a no-key fallba
 
 ---
 
-> **Note:** Built with AI assistance — I'm not a professional developer. The tool works well in practice, but ongoing maintenance may be limited. Contributions and bug reports are [welcome](https://github.com/rashad-07/mpv-subfinder/issues). Tested and confirmed working on **Windows**. Linux and macOS support is included in the code but untested — use at your own risk.
+> **Note:** Built with AI assistance — I'm not a professional developer. The tool works well in practice, but ongoing maintenance may be limited. Contributions and bug reports are [welcome](https://github.com/rashad-07/mpv-subfinder/issues). Tested and confirmed working on **Windows**. Linux and macOS support is included in the code but untested.
 
 ---
 
