@@ -159,9 +159,6 @@ winget install -e --id 7zip.7zip
 Or WinRAR:
 ```
 winget install -e --id RARLab.WinRAR
-```
-
-Or **bsdtar** — pre-installed on macOS (it is the system `tar`) and on Windows 10 1803+ (`tar.exe`). On Linux, install via `apt install libarchive-tools` or `pacman -S bsdtar`. SubFinder detects it automatically.
 
 ---
 
