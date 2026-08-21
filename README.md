@@ -159,6 +159,7 @@ winget install -e --id 7zip.7zip
 Or WinRAR:
 ```
 winget install -e --id RARLab.WinRAR
+```
 
 ---
 
