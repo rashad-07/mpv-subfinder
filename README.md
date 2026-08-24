@@ -134,6 +134,11 @@ pip install pysubs2
 pip install charset-normalizer
 ```
 
+**Drag-and-drop** *(optional, all platforms)*
+```
+pip install tkinterdnd2
+```
+
 **Subtitle/audio sync** — resource-intensive, use sparingly
 ```
 pip install ffsubsync
