@@ -232,7 +232,7 @@ Enable the IPC server in `mpv.conf` as described above, and install pywin32 on W
 First, make sure `subliminal` is installed — it requires no API key and works on its own as a reliable fallback, so it's the easiest way to guarantee you always get results. If you haven't: `pip install subliminal babelfish dogpile.cache`. Beyond that, confirm at least one API key is entered in Settings and the corresponding provider is enabled. Try simplifying the query — remove the year, resolution, and release tags. Run `python subfinder.py --test` to confirm keys are detected.
 
 **RAR pack fails to extract**  
-Install WinRAR, 7-Zip, or bsdtar (pre-installed on macOS; on Linux: `apt install libarchive-tools`; on Windows 10+: `tar.exe` is already on your PATH). SubFinder checks the Windows registry and common install paths automatically.
+Install WinRAR or 7-Zip. SubFinder checks the Windows registry and common install paths automatically.
 
 **Something's acting up and you're not sure why**  
 Settings → Clear All Caches flushes everything — downloads, search session, index, log, and subliminal's own cache.
