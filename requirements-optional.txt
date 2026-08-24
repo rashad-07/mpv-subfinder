@@ -36,7 +36,14 @@ pysubs2
 # Already installed if you have the `requests` package.
 #   pip install charset-normalizer
 charset-normalizer
-
+ 
+# ── Drag-and-drop (optional, all platforms) ───────────────────────────────────
+# Lets you drag a subtitle or archive file straight onto the SubFinder window
+# to add it, instead of using the Add Subtitle File browse dialog. Purely a
+# convenience — everything else works the same without it.
+#   pip install tkinterdnd2
+tkinterdnd2
+ 
 # ── Subtitle/audio sync ───────────────────────────────────────────────────────
 # Enables the Auto sync option in the right-click menu.
 # Resource-intensive — use sparingly on long files.
