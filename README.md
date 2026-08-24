@@ -47,7 +47,7 @@ Searches OpenSubtitles.com and SubDL at once, with subliminal as a no-key fallba
 
 ## API Keys
 
-SubFinder has three subtitle sources. Configure them in **Settings** after first launch — not in any config file.
+SubFinder has three subtitle sources. Configure them in **Settings** after first launch.
 
 **OpenSubtitles.com** — free API key required  
 Get one at [opensubtitles.com/en/consumers](https://www.opensubtitles.com/en/consumers). Enter your OS.com username and password in the Settings gear (⚙) for a higher daily quota. When this provider is enabled, the direct REST API is the primary search path, including moviehash matching against your local file for best sync accuracy.
