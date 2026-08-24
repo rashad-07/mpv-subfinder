@@ -161,7 +161,7 @@ winget install -e --id Gyan.FFmpeg
 winget install -e --id 7zip.7zip
 ```
 
-Or WinRAR:
+Or **WinRAR**:
 ```
 winget install -e --id RARLab.WinRAR
 ```
