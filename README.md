@@ -135,7 +135,7 @@ pip install pysubs2
 pip install charset-normalizer
 ```
 
-**Drag-and-drop**
+**Drag-and-drop** — enables Drag-and-drop feature.
 ```
 pip install tkinterdnd2
 ```
