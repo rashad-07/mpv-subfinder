@@ -37,7 +37,7 @@ pysubs2
 #   pip install charset-normalizer
 charset-normalizer
  
-# ── Drag-and-drop (optional, all platforms) ───────────────────────────────────
+# ── Drag-and-drop ───────────────────────────────────
 # Lets you drag a subtitle or archive file straight onto the SubFinder window
 # to add it, instead of using the Add Subtitle File browse dialog. Purely a
 # convenience — everything else works the same without it.
