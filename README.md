@@ -115,7 +115,7 @@ S        screenshot-window
 
 ## Optional packages
 
-**Windows — named pipe IPC** *(highly recommended on Windows)*
+**Windows — named pipe IPC** *(highly recommended - Windows only)*
 ```
 pip install pywin32
 ```
@@ -135,7 +135,7 @@ pip install pysubs2
 pip install charset-normalizer
 ```
 
-**Drag-and-drop** *(optional, all platforms)*
+**Drag-and-drop**
 ```
 pip install tkinterdnd2
 ```
