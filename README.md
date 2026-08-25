@@ -38,7 +38,7 @@ Searches OpenSubtitles.com and SubDL at once, with subliminal as a no-key fallba
 
 ## Requirements
 
-These are the main requirements to get you started immediately but the [Optional packages](#optional-packages) below are all highly recommended to get the full experience and gain access to all features.
+These are the main requirements to get you started immediately, but the [Optional packages](#optional-packages) below are all highly recommended to get the full experience and gain access to all features.
 - **mpv** (any recent build)
 - **Python 3.10+** — 3.11.9 recommended, must be on your PATH
 - **subliminal** — no API key, no account. Install it and you have a working subtitle source immediately, no configuration required.
